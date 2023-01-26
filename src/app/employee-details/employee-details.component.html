@@ -1,0 +1,26 @@
+<div *ngIf="(employeeDetails$ | async) as employee">
+  <h2>Employee Details</h2>
+  <div class="emp__field">
+    <labeL>First Name</labeL>
+    <span>{{employee.firstName}}</span>
+  </div>
+  <div class="emp__field">
+    <labeL>Last Name</labeL>
+    <span>{{employee.firstName}}</span>
+  </div>
+  <div class="emp__field">
+    <labeL>City</labeL>
+    <span>{{employee.city}}</span>
+  </div>
+  <div class="emp__field">
+    <labeL>state</labeL>
+    <span>{{employee.state}}</span>
+  </div>
+  <div class="emp__field">
+    <labeL>Country</labeL>
+    <span>{{employee.country}}</span>
+  </div>
+  <div>
+    <button mat-raised-button color="primary" [routerLink]="['']">Back</button>
+  </div>
+</div>
