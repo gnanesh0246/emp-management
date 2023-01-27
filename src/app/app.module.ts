@@ -11,19 +11,21 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule, MatSelectModule } from '@angular/material';
+import { MatInputModule, MatSelectModule, MatSnackBarModule, MatDialogModule } from '@angular/material';
 
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { EmployeeService } from './employee.service';
 import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeDeleteDialogComponent } from './employee-delete-dialog/employee-delete-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeListComponent,
     EmployeeDetailsComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    EmployeeDeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,12 @@ import { EmployeeComponent } from './employee/employee.component';
     MatTableModule,
     MatInputModule,
     MatSelectModule,
+    MatSnackBarModule,
+    MatDialogModule,
     HttpClientModule
+  ],
+  entryComponents: [
+    EmployeeDeleteDialogComponent
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

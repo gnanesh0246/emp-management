@@ -27,4 +27,8 @@ export class EmployeeService {
     return this.httpClient.post(this.getURL(`employees`), employee);
   }
 
+  deleteEmployee(id: number): Observable<any> {
+    return this.httpClient.delete(this.getURL(`employees/${id}`));
+  }
+
 }

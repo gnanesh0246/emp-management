@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Employee } from '../employee.model';
@@ -18,7 +19,7 @@ export class EmployeeComponent implements OnInit, OnDestroy {
   employeeForm: FormGroup;
   constructor(private route: ActivatedRoute,
      private router: Router,
-     private employeeService: EmployeeService, private fb: FormBuilder) { }
+     private employeeService: EmployeeService, private fb: FormBuilder, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.paramSubScription = this.route.params.subscribe((params) => {
@@ -56,11 +57,17 @@ export class EmployeeComponent implements OnInit, OnDestroy {
 
   saveEmployee(): void {
     if (this.employeeId && this.employeeId > 0) {
-      this.employeeService.updateEmployee({...this.employeeForm.value }, this.employee.id).subscribe((res) => {
+      this.employeeService.updateEmployee({...this.employeeForm.value }, this.employee.id).subscribe(() => {
+        this.snackBar.open('Employee updated successfully', null, {
+          duration: 2000
+        });
         this.router.navigate(['']);
       })
     } else {
-      this.employeeService.addEmployee(this.employeeForm.value).subscribe((res) => {
+      this.employeeService.addEmployee(this.employeeForm.value).subscribe(() => {
+        this.snackBar.open('Employee added successfully', null, {
+          duration: 2000
+        });
         this.router.navigate(['']);
       });
     }
